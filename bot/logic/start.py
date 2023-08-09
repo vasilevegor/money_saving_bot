@@ -5,8 +5,8 @@ from aiogram.fsm.context import FSMContext
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from sqlalchemy.orm import sessionmaker
 
-from bot.middlewares.register_check import RegisterCheck
-from bot.structures import MoneyStates
+from middlewares.register_check import RegisterCheck
+from structures import MoneyStates
 from db.money import get_balance, set_balance
 
 start_router = Router(name='start')
@@ -24,8 +24,7 @@ async def start_handler(message: types.Message, session_maker: sessionmaker) -> 
             ]
         ])
 
-    await message.answer('Привет! Тут все просто. В сообщении ниже твой актуальный баланс и две кнопки:\n1. '
-                         'Доход\n2. Расход ')
+
     balance = await get_balance(message.from_user.id, session_maker=session_maker)
     await message.answer(f"Баланс: {balance.balance}",
                          reply_markup=markup)
@@ -51,7 +50,7 @@ async def increase_money(message: types.Message, state: FSMContext, session_make
     except:
         return message.answer(f'Ошибка. Введите число, для указания копеек используйте "." вместо ","')
 
-    await set_balance(message.from_user.id, value, 0.0, session_maker)
+    await set_balance(message.from_user.id, abs(value), 0.0, session_maker)
     await state.clear()
     return await start_handler(message, session_maker)
 
@@ -72,10 +71,9 @@ async def increase_money(message: types.Message, state: FSMContext, session_make
         return await start_handler(message, session_maker)
 
     try:
-        value = message.text
-        if '-' not in value:
-            value = '-' + value
-            value = float(value)
+        value = float(message.text)
+        if value >= 0:
+            value = value * -1.0
     except ValueError:
         return await message.answer('Ошибка. Введите число без пробелов и для отделения целой части используйте "."')
 

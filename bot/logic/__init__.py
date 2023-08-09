@@ -4,7 +4,7 @@ from aiogram import Router, F
 from .help import help_router
 from .start import start_router
 from .balance import balance_router
-from bot.handlers import increase
+from handlers import increase
 
 routers = (start_router, help_router, balance_router)
 

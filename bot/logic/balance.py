@@ -3,7 +3,7 @@ from aiogram.filters import Command
 from sqlalchemy.orm import sessionmaker
 
 from db.money import get_balance
-from bot.middlewares.register_check import RegisterCheck
+from middlewares.register_check import RegisterCheck
 
 balance_router = Router(name='balance')
 

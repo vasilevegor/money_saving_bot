@@ -10,4 +10,5 @@ help_router = Router(name='help')
 @help_router.message(Command(commands='help'))
 async def help_handler(message: types.Message):
     """Help command handler."""
-    return await message.answer('Hi, world!')
+    return await message.answer('Привет! Тут все просто. Нажимай /start и управляй балансом с помощью двух кнопок:\n1. '
+                         'Доход\n2. Расход ')
