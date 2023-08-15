@@ -30,11 +30,11 @@ async def main():
 
     postgres_url = URL.create(
         "postgresql+asyncpg",
-        username=os.getenv("db_user"),
-        password=os.getenv("db_pass"),
+        username=os.getenv("POSTGRES_USER"),
+        password=os.getenv("POSTGRES_PASSWORD"),
         host="localhost",
-        port=os.getenv("db_port"),
-        database=os.getenv("db_name")
+        port=os.getenv("POSTGRES_PORT"),
+        database=os.getenv("POSTGRES_DATABASE")
 
     )
 
