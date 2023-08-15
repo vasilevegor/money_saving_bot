@@ -5,9 +5,9 @@ from aiogram.fsm.context import FSMContext
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 from sqlalchemy.orm import sessionmaker
 
-from middlewares.register_check import RegisterCheck
-from structures import MoneyStates
-from db.money import get_balance, set_balance
+from bot.middlewares.register_check import RegisterCheck
+from bot.structures import MoneyStates
+from bot.db.money import get_balance, set_balance
 
 start_router = Router(name='start')
 start_router.message.middleware(RegisterCheck())

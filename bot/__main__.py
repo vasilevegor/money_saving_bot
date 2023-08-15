@@ -6,9 +6,9 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from sqlalchemy import URL
 from dotenv import load_dotenv, dotenv_values
 
-from logic import start_router, balance_router, register_user_commands, help_router
+from bot.logic import start_router, balance_router, register_user_commands, help_router
 
-from db import BaseModel, proceed_schemas, get_session_maker, create_async_engine
+from bot.db import BaseModel, proceed_schemas, get_session_maker, create_async_engine
 
 
 load_dotenv()

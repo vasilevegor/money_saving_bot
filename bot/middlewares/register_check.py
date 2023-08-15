@@ -7,7 +7,7 @@ from sqlalchemy.engine import ScalarResult
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import sessionmaker
 
-from db import Money, User
+from bot.db import Money, User
 
 # from db import User, Money
 

@@ -2,8 +2,8 @@ from aiogram import Router, types
 from aiogram.filters import Command
 from sqlalchemy.orm import sessionmaker
 
-from db.money import get_balance
-from middlewares.register_check import RegisterCheck
+from bot.db.money import get_balance
+from bot.middlewares.register_check import RegisterCheck
 
 balance_router = Router(name='balance')
 
